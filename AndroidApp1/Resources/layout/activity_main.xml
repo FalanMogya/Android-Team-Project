@@ -16,4 +16,15 @@
         android:layout_marginTop="25.0dp"
         android:layout_marginBottom="0.0dp"
         android:layout_marginLeft="0.0dp" />
+
+    <SearchView
+        android:background="@drawable/search"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/imageView1"
+        android:layout_marginTop="150.0dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/searchView1" />
 </RelativeLayout>
