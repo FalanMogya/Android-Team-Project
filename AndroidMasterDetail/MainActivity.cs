@@ -8,6 +8,8 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace AndroidMasterDetail
 {

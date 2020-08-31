@@ -7,76 +7,68 @@
         "name": "root",
         "children": [ "Test Category" ]
       },
-      "Test Category": {
+      "BakedGoods_PreparedFoods": {
         "type": "category",
         "name": "Test Category",
         "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
-        ]
-      },
-      "Baked Goods and Prepared Foods": {
-        "type": "category",
-        "name": "Test Category",
-        "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
+          "baked_goods",
+          "Prepared Foods",
+          "Candies"
         ]
       },
       "Drinks": {
         "type": "category",
         "name": "Test Category",
         "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
+          "Alcoholic",
+          "Non-Alcoholic"
         ]
       },
-      "Refridgerated/Frozen Processed Foods": {
+      "Refridgerated/Frozen_ProcessedFoods": {
         "type": "category",
         "name": "Test Category",
-        "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
-        ]
-      },
-      "James, Jellies, and Shelf-Stable Canned Foods": {
-        "type": "category",
-        "name": "Test Category",
-        "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
-        ]
-      },
-      "Meats, Eggs, and Dairy Products": {
-        "type": "category",
-        "name": "Test Category",
-        "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
-        ]
-      },
-      "Fresh Produce": {
-        "type": "category",
-        "name": "Test Category",
-        "children": [
-          "Test Category/Test SubCategory",
-          "Test Entry"
-        ]
-      },
-      "Test Category/Test Subcategory": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
         "children": []
       },
-      "Baked Goods": {
+      "JamsJelliesShelf-StableCannedFoods": {
         "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "name": "Test Category",
+        "children": [
+          "James",
+          "Jellies",
+          "Shelf-Stable Canned Foods"
+        ]
       },
-      "Prepared Foods": {
+      "MeatsEggsDairyProducts": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Meats",
+          "Eggs",
+          "Dairy Products"
+        ]
+      },
+      "Candies": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+        ]
+      },
+      "FreshProduce": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+        ]
+      },
+      "BakedGoods": {
         "type": "category",
         "name": "Test Category/Test Subcategory",
-        "children": []
+        "children": [ "Home Kitchen", "Icing", "Dry Baking Mixes" ]
+      },
+      "PreparedFoods": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": [
+        ]
       },
       "Alcoholic": {
         "type": "category",
@@ -86,17 +78,7 @@
       "Non-Alcoholic": {
         "type": "category",
         "name": "Test Category/Test Subcategory",
-        "children": []
-      },
-      "Refridgerated": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
-      },
-      "Frozen": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "children": [ "Juice/Cider" ]
       },
       "Jams": {
         "type": "category",
@@ -108,30 +90,288 @@
         "name": "Test Category/Test Subcategory",
         "children": []
       },
-      "Shelf-Stable Canned Foods": {
+      "Shelf-StableCannedFoods": {
         "type": "category",
         "name": "Test Category/Test Subcategory",
         "children": []
       },
-      "Shelf-Stable Canned Foods": {
+      "CannedFoods": {
         "type": "category",
         "name": "Test Category/Test Subcategory",
         "children": []
       },
-      "Test Category/Test Subcategory": {
+      "Meat": {
         "type": "category",
         "name": "Test Category/Test Subcategory",
         "children": []
       },
-      "Test Category/Test Subcategory": {
+      "Eggs": {
         "type": "category",
         "name": "Test Category/Test Subcategory",
         "children": []
       },
-      "Test Entry": {
+      "DairyProducts": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+
+      //Entries will be lowercase
+
+      "bakedGoods": {
         "type": "entry",
-        "name": "Test Entry",
-        "description": "This is a test entry",
+        "name": "Baked Goods",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "icing": {
+        "type": "entry",
+        "name": "Icing",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "dryBakingMixes": {
+        "type": "entry",
+        "name": "Dry Baking Mixes",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "freshUncutFruitsVegetablesOrHerbs": {
+        "type": "entry",
+        "name": "Fresh Uncut Fruits Vegetables Or Herbs",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "intactSaladGreens": {
+        "type": "entry",
+        "name": "Intact Salad Greens",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "certainCutProduceAndCutHerbs": {
+        "type": "entry",
+        "name": "Certain Cut Produce and Herbs",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "nutsAndNutButters": {
+        "type": "entry",
+        "name": "Nuts and Nut Butters",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "honey": {
+        "type": "entry",
+        "name": "Honey",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "eggs": {
+        "type": "entry",
+        "name": "Eggs",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "poulty": {
+        "type": "entry",
+        "name": "Poulty",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "homeCannedFruitAndJellies": {
+        "type": "entry",
+        "name": "Home Canned Fruit and Jellies",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "cannedShelfStableNaturallyHighAcidFoods": {
+        "type": "entry",
+        "name": "Canned Shelf Stable Naturally High Acid Foods",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "juiceCider": {
+        "type": "entry",
+        "name": "Juice, Cider",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "candies": {
+        "type": "entry",
+        "name": "Candies",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "cultivatedMushrooms": {
+        "type": "entry",
+        "name": "Cultivated Mushrooms",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "fishAndSeafood": {
+        "type": "entry",
+        "name": "Fish and Seafood",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "foodsAndBeveragesPreparedOffSite": {
+        "type": "entry",
+        "name": "Foods and Beverages Prepared Off Site",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "foodsAndBeveragesSoldReadyForImmediateConsumption": {
+        "type": "entry",
+        "name": "Foods and Beverages Solf Ready For Immediate Consumption",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "nonspecializedProcessedFoods": {
+        "type": "entry",
+        "name": "Non-Specialized Processed Food",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "homemadeDriedPasta": {
+        "type": "entry",
+        "name": "Homemade Dried Pasta",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "vanillaExtract": {
+        "type": "entry",
+        "name": "Vanilla Extract",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "spices": {
+        "type": "entry",
+        "name": "Spices",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "lard": {
+        "type": "entry",
+        "name": "Lard",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "pepperVinegars": {
+        "type": "entry",
+        "name": "Pepper Vinegars",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "herbFlavoredInfusedVinegars": {
+        "type": "entry",
+        "name": "Herb Flavored/Infused Vinegars",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      },
+      "": {
+        "type": "entry",
+        "name": "",
+        "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
