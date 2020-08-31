@@ -73,11 +73,15 @@ namespace AndroidMasterDetail
         {
             int id = item.ItemId;
 
-            if (id == Resource.Id.nav_camera)
+            if (id == Resource.Id.nav_new)
             {
                 // Handle the camera action
             }
-            else if (id == Resource.Id.nav_gallery)
+            else if (id == Resource.Id.nav_markets)
+            {
+
+            }
+            else if (id == Resource.Id.nav_report)
             {
 
             }

@@ -1,0 +1,142 @@
+  {
+   "alerts":["Example Alert!","Covid Prevention..."],
+   "updates":["Subcategory is now a Test subcategory"],
+    "data": {
+      "Root": {
+        "type": "category",
+        "name": "root",
+        "children": [ "Test Category" ]
+      },
+      "Test Category": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "Baked Goods and Prepared Foods": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "Drinks": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "Refridgerated/Frozen Processed Foods": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "James, Jellies, and Shelf-Stable Canned Foods": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "Meats, Eggs, and Dairy Products": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "Fresh Produce": {
+        "type": "category",
+        "name": "Test Category",
+        "children": [
+          "Test Category/Test SubCategory",
+          "Test Entry"
+        ]
+      },
+      "Test Category/Test Subcategory": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Baked Goods": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Prepared Foods": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Alcoholic": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Non-Alcoholic": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Refridgerated": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Frozen": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Jams": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Jellies": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Shelf-Stable Canned Foods": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Shelf-Stable Canned Foods": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Test Category/Test Subcategory": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Test Category/Test Subcategory": {
+        "type": "category",
+        "name": "Test Category/Test Subcategory",
+        "children": []
+      },
+      "Test Entry": {
+        "type": "entry",
+        "name": "Test Entry",
+        "description": "This is a test entry",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false
+      }
+    }
+ }

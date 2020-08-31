@@ -3601,13 +3601,13 @@ namespace AndroidMasterDetail
 			public const int navigation_header_container = 2131230834;
 			
 			// aapt resource value: 0x7F08006E
-			public const int nav_camera = 2131230830;
+			public const int nav_markets = 2131230830;
 			
 			// aapt resource value: 0x7F08006F
-			public const int nav_gallery = 2131230831;
+			public const int nav_new = 2131230831;
 			
 			// aapt resource value: 0x7F080070
-			public const int nav_share = 2131230832;
+			public const int nav_report = 2131230832;
 			
 			// aapt resource value: 0x7F080071
 			public const int nav_view = 2131230833;
