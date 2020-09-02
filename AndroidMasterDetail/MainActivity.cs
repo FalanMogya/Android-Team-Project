@@ -158,7 +158,6 @@ namespace AndroidMasterDetail
         public bool OnNavigationItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-
             if (id == Resource.Id.nav_new)
             {
                 // Handle the camera action
