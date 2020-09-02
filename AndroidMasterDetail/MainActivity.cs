@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Android;
 using Android.App;
 using Android.OS;
@@ -8,8 +9,8 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Android.Widget;
+using Newtonsoft.Json;
 
 namespace AndroidMasterDetail
 {
@@ -32,7 +33,88 @@ namespace AndroidMasterDetail
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
+
+            int currentLayout = 0;
+            //Declarations for buttons
+            Button firstButton = FindViewById<Button>(Resource.Id.firstButton);
+            Button secondButton = FindViewById<Button>(Resource.Id.secondButton);
+            Button thirdButton = FindViewById<Button>(Resource.Id.thirdButton);
+            Button fourthButton = FindViewById<Button>(Resource.Id.fourthButton);
+            Button fifthButton = FindViewById<Button>(Resource.Id.fifthButton);
+            Button sixthButton = FindViewById<Button>(Resource.Id.sixthButton);
+            Button backButton = FindViewById<Button>(Resource.Id.backButton);
+            //Declarations for sets of buttons
+            LinearLayout firstLayout = FindViewById<LinearLayout>(Resource.Id.leftCol);
+            LinearLayout secondLayout = FindViewById<LinearLayout>(Resource.Id.rightCol);
+            LinearLayout firstClick = FindViewById<LinearLayout>(Resource.Id.firstClick);
+            LinearLayout secondClick = FindViewById<LinearLayout>(Resource.Id.secondClick);
+            LinearLayout thirdClick = FindViewById<LinearLayout>(Resource.Id.thirdClick);
+            LinearLayout fourthClick = FindViewById<LinearLayout>(Resource.Id.fourthClick);
+            LinearLayout fifthClick = FindViewById<LinearLayout>(Resource.Id.fifthClick);
+            //Click events for each button
+            firstButton.Click += delegate
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                firstClick.Visibility = ViewStates.Visible;
+                currentLayout = 1;
+            };
+            secondButton.Click += delegate
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                secondClick.Visibility = ViewStates.Visible;
+                currentLayout = 2;
+            };
+            thirdButton.Click += delegate
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                thirdClick.Visibility = ViewStates.Visible;
+                currentLayout = 3;
+            };
+            fourthButton.Click += delegate
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                fourthClick.Visibility = ViewStates.Visible;
+                currentLayout = 4;
+            };
+            fifthButton.Click += delegate
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                fifthClick.Visibility = ViewStates.Visible;
+                currentLayout = 5;
+            };
+            backButton.Click += delegate
+            {
+                if(currentLayout != 0)
+                {
+                    firstLayout.Visibility = ViewStates.Visible;
+                    secondLayout.Visibility = ViewStates.Visible;
+                    switch (currentLayout)
+                    {
+                        case 1:
+                            firstClick.Visibility = ViewStates.Invisible;
+                            break;
+                        case 2:
+                            secondClick.Visibility = ViewStates.Invisible;
+                            break;
+                        case 3:
+                            thirdClick.Visibility = ViewStates.Invisible;
+                            break;
+                        case 4:
+                            fourthClick.Visibility = ViewStates.Invisible;
+                            break;
+                        case 5:
+                            fifthClick.Visibility = ViewStates.Invisible;
+                            break;
+                    }
+                }
+            };
         }
+        
 
         public override void OnBackPressed()
         {
@@ -98,6 +180,7 @@ namespace AndroidMasterDetail
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }
 

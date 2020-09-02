@@ -7,9 +7,9 @@
         "name": "root",
         "children": [ "Test Category" ]
       },
-      "BakedGoods_PreparedFoods": {
+      "BakedGoodsPreparedFoodsAndImmediateConsumption": {
         "type": "category",
-        "name": "Test Category",
+        "name": "Baked Goods, Prepared Foods, and Immediate Consumption",
         "children": [
           "baked_goods",
           "Prepared Foods",
@@ -18,102 +18,120 @@
       },
       "Drinks": {
         "type": "category",
-        "name": "Test Category",
+        "name": "Drinks",
         "children": [
           "Alcoholic",
           "Non-Alcoholic"
         ]
       },
-      "Refridgerated/Frozen_ProcessedFoods": {
+      "RefridgeratedAndFrozenProcessedFoods": {
         "type": "category",
-        "name": "Test Category",
+        "name": "Refridgerated and Frozen Processed Foods",
         "children": []
       },
-      "JamsJelliesShelf-StableCannedFoods": {
+      "JamsJelliesShelfStableFood": {
         "type": "category",
-        "name": "Test Category",
+        "name": "Jams, Jellies, and Shelf-Stable Food",
         "children": [
-          "James",
+          "Jams",
           "Jellies",
-          "Shelf-Stable Canned Foods"
+          "ShelfStableFood"
         ]
       },
-      "MeatsEggsDairyProducts": {
+      "MeatsEggsDairyProductsSeafood": {
         "type": "category",
-        "name": "Test Category",
+        "name": "Meats, Eggs, Dairy Products, and Seafood",
         "children": [
-          "Meats",
+          "Meat",
           "Eggs",
-          "Dairy Products"
+          "DairyProducts",
+          "Seafood"
         ]
       },
       "Candies": {
-        "type": "category",
-        "name": "Test Category",
+        "type": "subcategory",
+        "name": "Candies",
         "children": [
+        ]
+      },
+      "ImmediateConsumption": {
+        "type": "subcategory",
+        "name": "Immediate Consumption",
+        "children": [
+          "foodsAndBeveragesSoldReadyForImmediateConsumption"
         ]
       },
       "FreshProduce": {
-        "type": "category",
-        "name": "Test Category",
+        "type": "subcategory",
+        "name": "Fresh Produce",
         "children": [
+          "freshUncutFruitsVegetablesOrHerbs",
+          "certainCutProduceAndCutHerbs",
+          "cultivatedMushrooms"
         ]
       },
       "BakedGoods": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
+        "type": "subcategory",
+        "name": "Baked Goods",
         "children": [ "Home Kitchen", "Icing", "Dry Baking Mixes" ]
       },
       "PreparedFoods": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
+        "type": "subcategory",
+        "name": "Prepared Foods",
         "children": [
+          "homemadeDriedPasta"
         ]
       },
       "Alcoholic": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
+        "type": "subcategory",
+        "name": "Alcoholic",
         "children": []
       },
       "Non-Alcoholic": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
+        "type": "subcategory",
+        "name": "Non-Alcoholic",
         "children": [ "Juice/Cider" ]
       },
       "Jams": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "type": "subcategory",
+        "name": "Jams",
+        "children": [ "homeCannedFruitAndJellies" ]
       },
       "Jellies": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
-      },
-      "Shelf-StableCannedFoods": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "type": "subcategory",
+        "name": "Jellies",
+        "children": [ "homeCannedFruitAndJellies" ]
       },
       "CannedFoods": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "type": "subcategory",
+        "name": "Canned Foods",
+        "children": [ "homeCannedFruitAndJellies" ]
       },
       "Meat": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "type": "subcategory",
+        "name": "Meat",
+        "children": [ "poultry" ]
       },
       "Eggs": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
-        "children": []
+        "type": "subcategory",
+        "name": "Eggs",
+        "children": [ "eggs" ]
       },
       "DairyProducts": {
-        "type": "category",
-        "name": "Test Category/Test Subcategory",
+        "type": "subcategory",
+        "name": "Dairy Products",
         "children": []
+      },
+
+      "Seafood": {
+        "type": "subcategory",
+        "name": "Seafood",
+        "children": [ "fishAndSeafood" ]
+      },
+      "ShelfStableFood": {
+        "type": "subcategory",
+        "name": "Shelf-Stable Food",
+        "children": [ "nutsAndNutButters", "honey", "cannedShelfStableNaturallyHighAcidFoods" ]
       },
 
       //Entries will be lowercase
@@ -208,7 +226,7 @@
         "snapEligible": false,
         "testingRequired": false
       },
-      "poulty": {
+      "poultry": {
         "type": "entry",
         "name": "Poulty",
         "description": "More info to come",
