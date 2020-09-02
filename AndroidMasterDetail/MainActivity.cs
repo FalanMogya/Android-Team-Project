@@ -43,6 +43,7 @@ namespace AndroidMasterDetail
             Button fifthButton = FindViewById<Button>(Resource.Id.fifthButton);
             Button sixthButton = FindViewById<Button>(Resource.Id.sixthButton);
             Button backButton = FindViewById<Button>(Resource.Id.backButton);
+
             //Declarations for sets of buttons
             LinearLayout firstLayout = FindViewById<LinearLayout>(Resource.Id.leftCol);
             LinearLayout secondLayout = FindViewById<LinearLayout>(Resource.Id.rightCol);
@@ -113,6 +114,7 @@ namespace AndroidMasterDetail
                     }
                 }
             };
+            //RelativeLayout bugReporting = FindViewById<RelativeLayout>(Resource.Id.bugreporting);
         }
         
 
@@ -167,7 +169,7 @@ namespace AndroidMasterDetail
             }
             else if (id == Resource.Id.nav_report)
             {
-
+                SetContentView(Resource.Layout.bugreporting);
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

@@ -2,11 +2,6 @@
    "alerts":["Example Alert!","Covid Prevention..."],
    "updates":["Subcategory is now a Test subcategory"],
     "data": {
-      "Root": {
-        "type": "category",
-        "name": "root",
-        "children": [ "Test Category" ]
-      },
       "BakedGoodsPreparedFoodsAndImmediateConsumption": {
         "type": "category",
         "name": "Baked Goods, Prepared Foods, and Immediate Consumption",
@@ -27,7 +22,11 @@
       "RefridgeratedAndFrozenProcessedFoods": {
         "type": "category",
         "name": "Refridgerated and Frozen Processed Foods",
-        "children": []
+        "children": [
+          "dough",
+          "nonSpecializedProcessedFoodMadeAndSoldSixOrFewerDays ",
+          "vacuumPackagedFoodsRequiringTemperatureControlForSafety"
+        ]
       },
       "JamsJelliesShelfStableFood": {
         "type": "category",
@@ -48,18 +47,23 @@
           "Seafood"
         ]
       },
-      "Candies": {
-        "type": "subcategory",
-        "name": "Candies",
+      "OtherFoodProducts": {
+        "type": "category",
+        "name": "Other Food Products",
         "children": [
+          "candies",
+          "spices",
+          "grainProducts",
+          "fruitLeathers",
+          "animalFeedAndTreats",
+          "chocolate candies",
+          "lard"
         ]
       },
-      "ImmediateConsumption": {
-        "type": "subcategory",
-        "name": "Immediate Consumption",
-        "children": [
-          "foodsAndBeveragesSoldReadyForImmediateConsumption"
-        ]
+      "SamplingOfFoodProducts": {
+        "type": "category",
+        "name": "Sampling of Food Products",
+        "children": ["samplingOfFoodProducts"]
       },
       "FreshProduce": {
         "type": "subcategory",
@@ -67,19 +71,31 @@
         "children": [
           "freshUncutFruitsVegetablesOrHerbs",
           "certainCutProduceAndCutHerbs",
-          "cultivatedMushrooms"
+          "cultivatedMushrooms",
+          "wildMushrooms",
+          "sprouts",
+          "cutLeafyGreens"
         ]
       },
+
       "BakedGoods": {
         "type": "subcategory",
         "name": "Baked Goods",
-        "children": [ "Home Kitchen", "Icing", "Dry Baking Mixes" ]
+        "children": [
+          "Home Kitchen",
+          "Icing",
+          "Dry Baking Mixes",
+          "breadWithCheeseBakedInOrOnTop",
+          "pecanPie",
+          "bakedProductsWithPotentialHazards"
+        ]
       },
       "PreparedFoods": {
         "type": "subcategory",
         "name": "Prepared Foods",
         "children": [
-          "homemadeDriedPasta"
+          "homemadeDriedPasta",
+          "foodsAndBeveragesSoldReadyForImmediateConsumption"
         ]
       },
       "Alcoholic": {
@@ -126,85 +142,108 @@
       "Seafood": {
         "type": "subcategory",
         "name": "Seafood",
-        "children": [ "fishAndSeafood" ]
+        "children": [
+          "fishAndSeafoodOnIce",
+          "cleanedFishAndSeafood",
+          "rawCatfish",
+          "readyToEatCatfish"
+        ]
       },
       "ShelfStableFood": {
         "type": "subcategory",
         "name": "Shelf-Stable Food",
-        "children": [ "nutsAndNutButters", "honey", "cannedShelfStableNaturallyHighAcidFoods" ]
+        "children": [
+          "nutsAndNutButters",
+          "honey",
+          "cannedShelfStableNaturallyHighAcidFoods",
+          "vanillaExtract",
+          "pepperVinegars",
+          "herbFlavoredVinegars",
+          "infusedOils",
+          "salsa",
+          "herbInfusedSimpleSyrups",
+          "homeCannedFruitJams"
+        ]
       },
 
-      //Entries will be lowercase
+      //Entries will be lowercase camel-case
 
       "bakedGoods": {
         "type": "entry",
-        "name": "Baked Goods",
+        "name": "Baked goods (home kitchen)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Follow labeling requirements (listed below). Note that breads with cheese baked in/on them require testing to determine their category (see testing table below)."
       },
       "icing": {
         "type": "entry",
-        "name": "Icing",
+        "name": "Icing with >65% sugar",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "If the icing is known to contain >65% sugar, testing and licensing is not needed. Otherwise, testing and possibly licensing is required (see testing table)."
       },
       "dryBakingMixes": {
         "type": "entry",
-        "name": "Dry Baking Mixes",
+        "name": "Dry baking mixes",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Follow labeling requirements (listed below)"
       },
       "freshUncutFruitsVegetablesOrHerbs": {
         "type": "entry",
-        "name": "Fresh Uncut Fruits Vegetables Or Herbs",
+        "name": "Fresh (or dried) uncut fruits,  vegetables, or herbs (not cut beyond normal harvesting)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "May be home-grown; any pesticide use must comply with label directions."
       },
       "intactSaladGreens": {
         "type": "entry",
-        "name": "Intact Salad Greens",
+        "name": "Intact salad greens (not cut beyond normal harvesting)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Follow weights and measures requirements. Note that all sprouts and any greens cut beyond normal harvesting require a license."
       },
       "certainCutProduceAndCutHerbs": {
         "type": "entry",
-        "name": "Certain Cut Produce and Herbs",
+        "name": "Certain cut produce and cut herbs (other than cut tomatoes, melons, or leafy greens)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "If product is blanched before freezing and has a pH above 4.2, licensing is required for frozen foods. If not blanched first, no licensing required."
       },
       "nutsAndNutButters": {
         "type": "entry",
-        "name": "Nuts and Nut Butters",
+        "name": "Nuts and nut butters",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "May be sold shelled or in-shell. Peanut and other nut butters can also be sold direct to consumer without licensing."
       },
       "honey": {
         "type": "entry",
@@ -214,137 +253,151 @@
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Can sell direct to consumer without licensing. Note that sales of packaged honey to grocery stores (including consignment sales) for resale or sales by an individual that did not package the honey requires a KDA Food Processors License."
       },
       "eggs": {
         "type": "entry",
-        "name": "Eggs",
+        "name": "Eggs (< 250 hens)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Should be sold at <45°F. Cartons should be clean and labeled properly. (Temperature control and labeling strongly suggested for establishments with fewer than 50 hens; temperature control and labeling required for farms with 51 to 249 hens, must be ungraded. Licensing (and grading) required with > 249 hens or if selling graded eggs.)"
       },
       "poultry": {
         "type": "entry",
-        "name": "Poulty",
+        "name": "Poultry < 20,000 birds/year)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Growers raising fewer than 1,000 birds/year can slaughter and sell direct to consumer their own birds at their own facility without registration or inspection. Growers selling 1,001 to 20,000 birds/year must register their exemption from inspection with KDA (at no cost). More details available in https://agriculture.ks.gov/docs/default-source/rc-meat-and-poultry/mp-19-m-p-registration-application.pdf"
       },
       "homeCannedFruitAndJellies": {
         "type": "entry",
-        "name": "Home Canned Fruit and Jellies",
+        "name": "Home-canned fruit jams and jellies; jams and jellies flavored with pepper-flavored vinegar or small amounts of pepper powder",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Must follow labeling requirements (see below)."
       },
       "cannedShelfStableNaturallyHighAcidFoods": {
         "type": "entry",
-        "name": "Canned Shelf Stable Naturally High Acid Foods",
+        "name": "Canned, shelf stable naturally high acid foods (and “formulat-ed acid” foods)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Must follow labeling requirements. Requirements for other canned foods listed below. More information on FDA’s classification of canned foods, including “formulated acid” foods is available from: https://www.fda.gov/food/guidanceregulation/guidancedocumentsregulatoryinformation/acidifiedlacf/default.htm"
       },
       "juiceCider": {
         "type": "entry",
-        "name": "Juice, Cider",
+        "name": "Juice, cider",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No license required if sold packaged (served by the glass requires license.) If not pasteurized, must include a warning statement on the label (see p. 58, Kansas Food Code, https://agriculture.ks.gov/docs/default-source/fsl--handouts/2012_kda_food_code_12_14_12.pdf). Can be put into bottles or jugs, but not sealed or heat filled to be exempt."
       },
       "candies": {
         "type": "entry",
-        "name": "Candies",
+        "name": "Candies (made in home kitch-en)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Note: homemade chocolates must be tested to determine if license is needed (see testing table on page 5)."
       },
       "cultivatedMushrooms": {
         "type": "entry",
-        "name": "Cultivated Mushrooms",
+        "name": "Cultivated mushrooms (culinary and medicinal)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Note the regulations listed below for wild mushrooms."
       },
-      "fishAndSeafood": {
+      "fishAndSeafoodSoldWholeOnIce": {
         "type": "entry",
-        "name": "Fish and Seafood",
+        "name": "Fish and seafood — sold whole on ice (does NOT include catfish and other Siluriformes)",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No HACCP plan or processing license required. Note that wild-caught fish sales are illegal without a commercial fishing permit from Kansas Department of Wildlife, Parks and Tourism. See K.S.A. 115-17-10 and 115-17-13 for more information."
       },
       "foodsAndBeveragesPreparedOffSite": {
         "type": "entry",
-        "name": "Foods and Beverages Prepared Off Site",
+        "name": "Foods and beverages prepared off site, sold ready for immedi-ate consumption — six or fewer times per calendar year.",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No licensing required; however, must follow “Sanitation and hygiene requirements for exempt food establishments”. No licensing required; however, must follow Kansas Administrative Regulations (KAR) 4-28-33 “Sanitation and hygiene requirements for exempt food establishments”. More details also in KAR 4-28-34 (Exemption from licensure; definitions). Note that this would also include cooking classes and competitions, such as BBQ competitions."
       },
       "foodsAndBeveragesSoldReadyForImmediateConsumption": {
         "type": "entry",
-        "name": "Foods and Beverages Solf Ready For Immediate Consumption",
+        "name": "Foods and beverages sold ready for immediate consump-tion by community groups for fundraising purposes",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No licensing required; however, must follow “Sanitation and hygiene requirements for exempt food establishments”. Fundraising for community or humanitarian purposes and educational or youth activities is exempt from licensing with no restriction on number of times done per year."
       },
       "nonspecializedProcessedFoods": {
         "type": "entry",
-        "name": "Non-Specialized Processed Food",
+        "name": "Non-specialized processed food that is made and sold six or fewer days in a year. ",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "The food product can be made on day one and each day they are sold adds to the total of up to 6 days without a license. Must follow “Sanitation and hygiene requirements for exempt food establishments” indicated above. Products such as pesto need to be cooled quickly and held at < 41°F for no more than 6 days after preparing. Note that any products that require specialized processing* require advance approval even if it is for 6 or fewer days."
       },
       "homemadeDriedPasta": {
         "type": "entry",
-        "name": "Homemade Dried Pasta",
+        "name": "Homemade dried pasta",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No licensing required if dried in a protected environment in a short time period "
       },
       "vanillaExtract": {
         "type": "entry",
-        "name": "Vanilla Extract",
+        "name": "Vanilla extract",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No licensing needed if the product meets the standard of identity in 21 CFR 169.175 to ensure it is vanilla extract and not a flavored alcohol. "
       },
       "spices": {
         "type": "entry",
@@ -354,7 +407,8 @@
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Product must be labeled properly, unadulterated, and sold in a sanitary manner"
       },
       "lard": {
         "type": "entry",
@@ -364,37 +418,371 @@
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "No licensing required if sold direct to consumer."
       },
       "pepperVinegars": {
         "type": "entry",
-        "name": "Pepper Vinegars",
+        "name": "Pepper vinegars",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "RAW peppers must be used in making pepper vinegar to sell without a license"
       },
       "herbFlavoredInfusedVinegars": {
         "type": "entry",
-        "name": "Herb Flavored/Infused Vinegars",
+        "name": "Herb-flavored/infused vinegars",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Unless using low-acid vinegar (pH>4.2) or enough herbs included to raise equilibrium pH above 4.2, product does NOT require a license."
       },
-      "": {
+      "grainProducts": {
         "type": "entry",
-        "name": "",
+        "name": "Grain products",
         "description": "More info to come",
         "examples": "",
         "license": false,
         "temperatureControl": false,
         "snapEligible": false,
-        "testingRequired": false
+        "testingRequired": false,
+        "regulation": "Standard hygiene and sanitation requirements, as with all food sold"
+      },
+      "fruitLeathers": {
+        "type": "entry",
+        "name": "Fruit leathers",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Standard hygiene and sanitation requirements, as with all food sold"
+      },
+      "samplingOfFoodsProducts": {
+        "type": "entry",
+        "name": "Sampling of food products",
+        "description": "More info to come",
+        "examples": "",
+        "license": false,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Samples must be prepared and served in a sanitary manner. More details available in the KSRE/KDA publication MF3311 on “Sampling Safely at Kansas Farmers Markets. (https://bookstore.ksre.k-state.edu/pubs/MF3311.pdf)"
+      },
+      "dairyProducts": {
+        "type": "entry",
+        "name": "Dairy products; milk",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Pasteurized and processed at KDA licensed Dairy Manufacturing Plant; food establishment license required at point of sale. Note that if a vendor can provide information about a vacuum packaged cheese to show that it does not require refrigeration for safety (typically low water activity and low pH values), a food establishment license would NOT be required for the point of sale. "
+      },
+      "bakedProductsWithPotentialHazards": {
+        "type": "entry",
+        "name": "Baked products with potentially hazardous dairy and egg  products",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Food establishment license required at production facility and point of sale. "
+      },
+      "dough": {
+        "type": "entry",
+        "name": "Dough",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Product requires temperature control for safety, so a food establishment license is required."
+      },
+      "meatPoultryCatfishRaw": {
+        "type": "entry",
+        "name": "Meat, poultry (>20,000 birds/year), and catfish — rawNote: products containing 2% or more cooked meat or poultry or more than 3% raw meat by weight are considered meat products.",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Product must be processed at an inspected facility and properly labeled. Food establishment license required at point of sale unless registered as a wholesale dealer. May be sold refrigerated or frozen. Note that these products require KDA Meat and Poultry inspection for wholesale (for further distribution) sales."
+      },
+      "meatPoultryCatfishReadyToEat": {
+        "type": "entry",
+        "name": "Meat, poultry, and catfish ready to eat",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Product must be inspected by KDA or USDA and sold at the appropriate temperature. Note that any curing of meat using nitrites requires proper licensing."
+      },
+      "fishAndSeafoodCleaned": {
+        "type": "entry",
+        "name": "Fish and seafood — cleaned (other than catfish)",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA food establishment or food processing license at preparation facility, Hazard Analysis, food establishment license at the point of sale. An HACCP plan is also needed if any hazards are identified as being reasonably likely to occur. Note that wild-caught fish sales are illegal without a commercial fishing permit from KDWPT."
+      },
+      "vacuumPackedFoods": {
+        "type": "entry",
+        "name": "Vacuum-packaged foods requiring temperature control for safety",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Must follow the above-listed requirements of cheese or meat products or whatever category the food is in."
+      },
+      "sprouts": {
+        "type": "entry",
+        "name": "Sprouts",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA food establishment license required at production facility and point of sale."
+      },
+      "cutLeafyGreens": {
+        "type": "entry",
+        "name": "Cut leafy greens (fresh or dried)",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA food establishment license required at production facility and point of sale. Must be sold at or below 41°F."
+      },
+      "certainCutProduce": {
+        "type": "entry",
+        "name": "Certain cut produce (fresh or dried)",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA food establishment license required at production facility and point of sale."
+      },
+      "roastedVegetables": {
+        "type": "entry",
+        "name": "Roasted vegetables",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Temperature control is required for safety; therefore, KDA license is required. Note that even if you are selling raw produce and providing roasting services on-site, you would still need a license. Must wash before roasting."
+      },
+      "wildMushrooms": {
+        "type": "entry",
+        "name": "Wild mushrooms",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Mushrooms picked in the wild must be individually inspected for safety by a KDA-registered mushroom identifier. More information available in the Selling Fresh Produce section."
+      },
+      "naturallyFermentedCannedGoods": {
+        "type": "entry",
+        "name": "Naturally fermented canned foods",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA Food Establishment License required for production facility."
+      },
+      "acidifiedShelfStableCannedFoods": {
+        "type": "entry",
+        "name": "Acidified shelf-stable canned foods/Low-acid shelf-stable canned foods",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA Food Establishment License or Food Processors License required for production facility. Requires recipe approval; Better Process Control School (BPCS) required. KDA Meat and Poultry inspection required if canned meat is sold wholesale. Contact Kansas State University Value-Added Foods Lab for more information on recipe approval and BPCS: www.ksre.ksu.edu/kvaf"
+      },
+      "foodAndBeveragesPreparedOnOrOffSiteImmediateConsumption": {
+        "type": "entry",
+        "name": "Foods and beverages prepared on or off site, sold ready for immediate consumption — six or more times per calendar year.",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "If selling more than six times/year, vendor must have a KDA Food Establishment license. Note that a Food Processing License would be required for any WHOLESALE sales."
+      },
+      "alcoholicBeverages": {
+        "type": "entry",
+        "name": "Alcoholic beverages (>0.5% alcohol by volume)",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Kansas Dept. of Revenue alcohol licensing requirements. (www.ksrevenue.org/abcstatutes.html)"
+      },
+      "infusedOils": {
+        "type": "entry",
+        "name": "Infused oils",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "KDA Food Establishment License or Food Processors License required for production facility. If finished product is not shelf stable, food establishment license also required for point of sale."
+      },
+      "animalFeedAndTreats": {
+        "type": "entry",
+        "name": "Animal feed/treats",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "Kansas commercial feed license and small pet product application required. Food safety license not required (may be made in a home kitchen). Guaranteed analysis for protein, fat, and fiber, and ingredient statement required on label. (More information available from: http://agriculture.ks.gov/divisions-programs/dairy-inspection/feed-safety/feed-licenses)"
+      },
+      "broths": {
+        "type": "entry",
+        "name": "Broths",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": false,
+        "regulation": "If includes less than 2% meat or poultry (after cooking), KDA Food Establishment licence required (for direct to consumer sales). KDA Food processing license required if selling wholesale. If canned and sold shelf stable, follow acidified or low acid canned food requirements (see above)."
+      },
+      "pepperJamesAndJellies": {
+        "type": "entry",
+        "name": "Pepper jams and jellies (canned, shelf-stable, other than those described above as exempt). In-cludes jellies made with pepper juice.",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If product is determined to have low water activity, product can be sold without a license. Otherwise, KDA license required."
+      },
+      "lowSugarFruitJamsAndJellies": {
+        "type": "entry",
+        "name": "Low-sugar fruit jams and jellies",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If product is determined to be an acid food, formulated acid, or low water activity food, no license is required. Otherwise, KDA license required."
+      },
+      "salsaBarbecueSauceAndSimilarFoods": {
+        "type": "entry",
+        "name": "Low-sugar fruit jams and jellies (canned, shelf-stable)",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "Depending on the pH of the final product and the main product ingredients, the product may be exempt from licensing† or may be considered an acidified canned food that requires a license (see information on acidified foods in table above)."
+      },
+      "chocolateCandies": {
+        "type": "entry",
+        "name": "Chocolate Candies",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If product is determined to require temperature control for safety in a product assessment, KDA license is required. Otherwise, no license is required."
+      },
+      "pecanPie": {
+        "type": "entry",
+        "name": "Pecan Pie",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If the filling is determined to require temperature control based on its water activity, KDA license is required. Otherwise, no license is required."
+      },
+      "PowderedSugarAndMilkIcing": {
+        "type": "entry",
+        "name": "Powdered sugar/ milk icing",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "Often used on cinnamon rolls and similar products. If product is determined to have low water activity, product can be sold without a license. Otherwise, KDA license required. Note that if the icing is known to contain >65% sugar, testing and licensing is not needed."
+      },
+      "breadWithCheeseBakedInOrOnTop": {
+        "type": "entry",
+        "name": "Bread with cheese baked in/on top",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If product is determined to have low water activity and thus not require refrigeration for safety, product can be sold without a license. Otherwise, KDA license required."
+      },
+      "homemadeMustard": {
+        "type": "entry",
+        "name": "Homemade mustard",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If the product is determined to have pH below 4.6 and that it can be safely stored at room temperature, product can be sold direct to consumer without a license. Otherwise, KDA license is required. "
+      },
+      "herbInfusedSimpleSyrups": {
+        "type": "entry",
+        "name": "Herb-infused simple syrups, elderberry and other fruit syrups",
+        "description": "More info to come",
+        "examples": "",
+        "license": true,
+        "temperatureControl": false,
+        "snapEligible": false,
+        "testingRequired": true,
+        "regulation": "If product is determined to be a low water activity food, no license is required. Otherwise, KDA license is required."
       }
     }
  }
