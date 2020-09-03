@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using Android;
 using Android.App;
 using Android.OS;
@@ -8,12 +11,54 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
+using Android.Support.V7.RecyclerView.Extensions;
+using Android.Support.V7.View.Menu;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Org.Json;
+using static Android.Content.ClipData;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace AndroidMasterDetail
 {
+    public class Root
+    {
+        public List<Category> categories { get; set; }
+        public List<Subcategory> subcategories { get; set; }
+        public List<Entry> entries { get; set; }
+    }
+    public class Category
+    {
+        public string categoryId { get; set; }
+        public string type { get; set; }
+        public string name { get; set; }
+        public List<string> children { get; set; }
+    }
+    public class Subcategory
+    {
+        public string subcategoryId { get; set; }
+        public string type { get; set; }
+        public string name { get; set; }
+        public List<string> children { get; set; }
+    }
+    public class Entry
+    {
+        public string entryId { get; set; }
+        public string type { get; set; }
+        public string name { get; set; }
+        public List<object> children { get; set; }
+        public string description { get; set; }
+        public string examples { get; set; }
+        public bool license { get; set; }
+        public bool temperatureControl { get; set; }
+        public bool snapEligible { get; set; }
+        public bool testingRequired { get; set; }
+        public string regulation { get; set; }
+    }
     [Activity(Label = "KSRE", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
@@ -52,6 +97,8 @@ namespace AndroidMasterDetail
             LinearLayout thirdClick = FindViewById<LinearLayout>(Resource.Id.thirdClick);
             LinearLayout fourthClick = FindViewById<LinearLayout>(Resource.Id.fourthClick);
             LinearLayout fifthClick = FindViewById<LinearLayout>(Resource.Id.fifthClick);
+
+
             //Click events for each button
             firstButton.Click += delegate
             {
@@ -114,9 +161,41 @@ namespace AndroidMasterDetail
                     }
                 }
             };
-            //RelativeLayout bugReporting = FindViewById<RelativeLayout>(Resource.Id.bugreporting);
+            List<Category> categoryItems = new List<Category>();
+            StreamReader strm = new StreamReader(Assets.Open("categories.json"));
+            string json = strm.ReadToEnd();
+            Root root = JsonConvert.DeserializeObject<Root>(json);
+            //dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+            //dynamic jsonObj = Newtonsoft.Json.Linq.JValue.Parse(json);
+            /*dynamic categoryObj;
+            foreach (var item in jsonObj)
+            {
+                if(item.Name == "categories")
+                {
+                    categoryObj = item;
+                    foreach (var item2 in categoryObj)
+                    {
+                        categoryItems.Add(JsonConvert.DeserializeObject<Category>(item2.Value));
+                    }
+                }
+            }
+            */
+            /*
+            ListView foodList = FindViewById<ListView>(Resource.Id.listView);
+
+            base.OnCreate(savedInstanceState);
+
+            ListAdapter adapter = new ArrayAdapter<string>(this, Resource.Layout.list_item, //StringArrayHere);
+
+            foodList.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args)
+            {
+                Toast.MakeText(Application, ((TextView)args.View).Text, ToastLength.Short).Show();
+            };
+            */
+
         }
-        
+
+
 
         public override void OnBackPressed()
         {

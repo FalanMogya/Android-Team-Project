@@ -33,6 +33,7 @@
         android:queryBackground="@android:color/transparent"
         android:longClickable="false" />
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/leftCol"
         android:layout_marginTop="230.0dp"
         android:layout_width="match_parent"
@@ -91,6 +92,7 @@
             android:id="@+id/seventhButton" />
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/rightCol"
         android:layout_marginTop="230.0dp"
         android:layout_width="match_parent"
@@ -350,6 +352,7 @@
             android:id="@+id/dairyButton" />
     </LinearLayout>
     <Button
+        android:visibility="gone"
         android:text="Back"
         android:layout_marginTop="480dp"
         android:textColor="@android:color/white"
@@ -361,4 +364,13 @@
         android:layout_column = "0"
         android:layout_centerHorizontal="true"
         android:id="@+id/backButton" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/listView" />
+
 </RelativeLayout>
