@@ -342,7 +342,7 @@
       "temperatureControl": false,
       "snapEligible": false,
       "testingRequired": false,
-      "regulation": "Should be sold at <45°F. Cartons should be clean and labeled properly. (Temperature control and labeling strongly suggested for establishments with fewer than 50 hens; temperature control and labeling required for farms with 51 to 249 hens, must be ungraded. Licensing (and grading) required with > 249 hens or if selling graded eggs.)"
+      "regulation": "Should be sold at <45F. Cartons should be clean and labeled properly. (Temperature control and labeling strongly suggested for establishments with fewer than 50 hens; temperature control and labeling required for farms with 51 to 249 hens, must be ungraded. Licensing (and grading) required with > 249 hens or if selling graded eggs.)"
     },
     {
       "entryId": "homeCannedFruitAndJellies",

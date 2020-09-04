@@ -78,9 +78,9 @@
             android:layout_marginTop="5dp"
             android:id="@+id/fifthButton" />
         <Button
-            android:text="Other-Sampling of Foods Products"
+            android:text="Other-Sampling of Food Products"
             android:textColor="@android:color/white"
-            android:textSize="13dp"
+            android:textSize="11dp"
             android:background="@drawable/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

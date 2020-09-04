@@ -88,7 +88,8 @@ namespace AndroidMasterDetail
             int currentLayout = 0;
             //Reads the JSON, creates an object from it.
             StreamReader strm = new StreamReader(Assets.Open("categories.json"));
-            string json = strm.ReadToEnd();
+            string json = JObject.Parse(strm.ReadToEnd()).ToString();
+            //string json = strm.ReadToEnd();
             Root root = JsonConvert.DeserializeObject<Root>(json);
 
             //Declarations for buttons
@@ -138,7 +139,24 @@ namespace AndroidMasterDetail
                 {
                     if(itemSelected == i.name)
                     {
-                        alert.SetMessage(i.regulation);
+                        string message = i.regulation;
+                        if (i.license == true)
+                        {
+                            message += "\nRequires License.";
+                        }
+                        else
+                        {
+                            message += "\nDoes Not Require License.";
+                        }
+                        if (i.testingRequired == true)
+                        {
+                            message += "\nRequires Testing.";
+                        }
+                        else
+                        {
+                            message += "\nDoes Not Require Testing.";
+                        }
+                        alert.SetMessage(message);
                         alert.Show();
                     }
                 }
@@ -161,13 +179,30 @@ namespace AndroidMasterDetail
                 {
                     if (itemSelected == i.name)
                     {
-                        alert.SetMessage(i.regulation);
+                        string message = i.regulation;
+                        if(i.license == true)
+                        {
+                            message += "\nRequires License.";
+                        }
+                        else
+                        {
+                            message += "\nDoes Not Require License.";
+                        }
+                        if (i.testingRequired == true)
+                        {
+                            message += "\nRequires Testing.";
+                        }
+                        else
+                        {
+                            message += "\nDoes Not Require Testing.";
+                        }
+                        alert.SetMessage(message);
                         alert.Show();
                     }
                 }
             };
             SearchView search = FindViewById<SearchView>(Resource.Id.search);
-            search.SetQueryHint("Search for a food!");
+            search.SetQueryHint("Search for a food item...");
             search.QueryTextChange += sv_QueryTextChange;
             void sv_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
             {
@@ -177,7 +212,7 @@ namespace AndroidMasterDetail
                 secondClick.Visibility = ViewStates.Gone;
                 thirdClick.Visibility = ViewStates.Gone;
                 fourthClick.Visibility = ViewStates.Gone;
-                listLayout2.Visibility = ViewStates.Gone;
+                listLayout.Visibility = ViewStates.Gone;
                 listLayout2.Visibility = ViewStates.Visible;
                 adapter.Filter.InvokeFilter(e.NewText);
                 currentLayout = 13;
@@ -427,6 +462,7 @@ namespace AndroidMasterDetail
                             secondClick.Visibility = ViewStates.Gone;
                             thirdClick.Visibility = ViewStates.Gone;
                             fourthClick.Visibility = ViewStates.Gone;
+                            listLayout.Visibility = ViewStates.Gone;
                             listLayout2.Visibility = ViewStates.Gone;
                             search.SetIconifiedByDefault(false);
                             search.ClearFocus();
