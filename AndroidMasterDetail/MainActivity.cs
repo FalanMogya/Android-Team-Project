@@ -22,6 +22,11 @@ using static Android.Content.ClipData;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel;
+using Java.Security;
+using AlertDialog = Android.Support.V7.App.AlertDialog;
+using Android.Views.InputMethods;
+using Android.Content;
 
 namespace AndroidMasterDetail
 {
@@ -62,6 +67,7 @@ namespace AndroidMasterDetail
     [Activity(Label = "KSRE", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
+        ListView mainList;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -80,6 +86,11 @@ namespace AndroidMasterDetail
             navigationView.SetNavigationItemSelectedListener(this);
 
             int currentLayout = 0;
+            //Reads the JSON, creates an object from it.
+            StreamReader strm = new StreamReader(Assets.Open("categories.json"));
+            string json = strm.ReadToEnd();
+            Root root = JsonConvert.DeserializeObject<Root>(json);
+
             //Declarations for buttons
             Button firstButton = FindViewById<Button>(Resource.Id.firstButton);
             Button secondButton = FindViewById<Button>(Resource.Id.secondButton);
@@ -87,7 +98,21 @@ namespace AndroidMasterDetail
             Button fourthButton = FindViewById<Button>(Resource.Id.fourthButton);
             Button fifthButton = FindViewById<Button>(Resource.Id.fifthButton);
             Button sixthButton = FindViewById<Button>(Resource.Id.sixthButton);
+            Button seventhButton = FindViewById<Button>(Resource.Id.seventhButton);
+            Button eighthButton = FindViewById<Button>(Resource.Id.eighthButton);
             Button backButton = FindViewById<Button>(Resource.Id.backButton);
+            Button bakedButton = FindViewById<Button>(Resource.Id.bakedButton);
+            Button preparedButton = FindViewById<Button>(Resource.Id.preparedButton);
+            Button alcButton = FindViewById<Button>(Resource.Id.alcButton);
+            Button nonAlcButton = FindViewById<Button>(Resource.Id.nonAlcButton);
+            Button jamButton = FindViewById<Button>(Resource.Id.jamButton);
+            Button jellyButton = FindViewById<Button>(Resource.Id.jellyButton);
+            Button shelfStableButton = FindViewById<Button>(Resource.Id.shelfStableButton);
+            Button meatButton = FindViewById<Button>(Resource.Id.meatButton);
+            Button eggsButton = FindViewById<Button>(Resource.Id.eggsButton);
+            Button dairyButton = FindViewById<Button>(Resource.Id.dairyButton);
+
+
 
             //Declarations for sets of buttons
             LinearLayout firstLayout = FindViewById<LinearLayout>(Resource.Id.leftCol);
@@ -96,8 +121,67 @@ namespace AndroidMasterDetail
             LinearLayout secondClick = FindViewById<LinearLayout>(Resource.Id.secondClick);
             LinearLayout thirdClick = FindViewById<LinearLayout>(Resource.Id.thirdClick);
             LinearLayout fourthClick = FindViewById<LinearLayout>(Resource.Id.fourthClick);
-            LinearLayout fifthClick = FindViewById<LinearLayout>(Resource.Id.fifthClick);
 
+            //Declaration for list's layout
+            LinearLayout listLayout = FindViewById<LinearLayout>(Resource.Id.listLayout);
+            LinearLayout listLayout2 = FindViewById<LinearLayout>(Resource.Id.listLayout2);
+
+            Android.Support.V7.App.AlertDialog.Builder alert = new Android.Support.V7.App.AlertDialog.Builder(this);
+            //Declaration for ListView and it's items
+            BindingList<string> items = new BindingList<string>();
+            mainList = (ListView)FindViewById<ListView>(Resource.Id.mainlistview);
+            mainList.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, items);
+            mainList.ItemClick += (s, e) => {
+                var t = items[e.Position];
+                string itemSelected = items[e.Position];
+                foreach (Entry i in root.entries)
+                {
+                    if(itemSelected == i.name)
+                    {
+                        alert.SetMessage(i.regulation);
+                        alert.Show();
+                    }
+                }
+            };
+
+            //SearchView Declaration
+            BindingList<string> items2 = new BindingList<string>();
+            ListView mainList2 = (ListView)FindViewById<ListView>(Resource.Id.mainlistview2);
+
+            foreach(Entry i in root.entries)
+            {
+                items2.Add(i.name);
+            }
+            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, items2);
+            mainList2.Adapter = adapter;
+            mainList2.ItemClick += (s, e) => {
+                var t = items2[e.Position];
+                string itemSelected = items2[e.Position];
+                foreach (Entry i in root.entries)
+                {
+                    if (itemSelected == i.name)
+                    {
+                        alert.SetMessage(i.regulation);
+                        alert.Show();
+                    }
+                }
+            };
+            SearchView search = FindViewById<SearchView>(Resource.Id.search);
+            search.SetQueryHint("Search for a food!");
+            search.QueryTextChange += sv_QueryTextChange;
+            void sv_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                firstClick.Visibility = ViewStates.Gone;
+                secondClick.Visibility = ViewStates.Gone;
+                thirdClick.Visibility = ViewStates.Gone;
+                fourthClick.Visibility = ViewStates.Gone;
+                listLayout2.Visibility = ViewStates.Gone;
+                listLayout2.Visibility = ViewStates.Visible;
+                adapter.Filter.InvokeFilter(e.NewText);
+                currentLayout = 13;
+            }
 
             //Click events for each button
             firstButton.Click += delegate
@@ -130,73 +214,227 @@ namespace AndroidMasterDetail
             };
             fifthButton.Click += delegate
             {
+                currentLayout = 5;
+                FiveSixSevenEightListing("Refridgerated/FrozenProcessed");
+            };
+            sixthButton.Click += delegate
+            {
+                currentLayout = 6;
+                FiveSixSevenEightListing("FreshProduce");
+            };
+            seventhButton.Click += delegate
+            {
+                currentLayout = 7;
+                FiveSixSevenEightListing("SamplingOfFoodProducts");
+            };
+            eighthButton.Click += delegate
+            {
+                currentLayout = 8;
+                FiveSixSevenEightListing("OtherFoodProducts");
+            };
+            meatButton.Click += delegate
+            {
+                fourthClick.Visibility = ViewStates.Gone;
+                currentLayout = 9;
+                SubCategoryListing("Meat");
+            };
+            eggsButton.Click += delegate
+            {
+                fourthClick.Visibility = ViewStates.Gone;
+                currentLayout = 9;
+                SubCategoryListing("Eggs");
+            };
+            dairyButton.Click += delegate
+            {
+                fourthClick.Visibility = ViewStates.Gone;
+                currentLayout = 9;
+                SubCategoryListing("DairyProducts");
+            };
+            bakedButton.Click += delegate
+            {
+                firstClick.Visibility = ViewStates.Gone;
+                currentLayout = 10;
+                SubCategoryListing("BakedGoods");
+            };
+            preparedButton.Click += delegate
+            {
+                firstClick.Visibility = ViewStates.Gone;
+                currentLayout = 10;
+                SubCategoryListing("PreparedFoods");
+            };
+            alcButton.Click += delegate
+            {
+                thirdClick.Visibility = ViewStates.Gone;
+                currentLayout = 11;
+                SubCategoryListing("Alcoholic");
+            };
+            nonAlcButton.Click += delegate
+            {
+                thirdClick.Visibility = ViewStates.Gone;
+                currentLayout = 11;
+                SubCategoryListing("Non-Alcoholic");
+            };
+            jamButton.Click += delegate
+            {
+                secondClick.Visibility = ViewStates.Gone;
+                currentLayout = 12;
+                SubCategoryListing("Jams");
+            };
+            jellyButton.Click += delegate
+            {
+                secondClick.Visibility = ViewStates.Gone;
+                currentLayout = 12;
+                SubCategoryListing("Jellies");
+            };
+            shelfStableButton.Click += delegate
+            {
+                secondClick.Visibility = ViewStates.Gone;
+                currentLayout = 12;
+                SubCategoryListing("ShelfStableFood");
+            };
+            void FiveSixSevenEightListing(string foodItem)
+            {
                 firstLayout.Visibility = ViewStates.Gone;
                 secondLayout.Visibility = ViewStates.Gone;
-                fifthClick.Visibility = ViewStates.Visible;
-                currentLayout = 5;
-            };
+                foreach(Category i in root.categories)
+                {
+                    if(i.categoryId == foodItem)
+                    {
+                        foreach(Entry j in root.entries)
+                        {
+                            for(int k = 0; k < i.children.Count; k++)
+                            {
+                                if(j.entryId == i.children[k])
+                                {
+                                    items.Add(j.name);
+                                }
+                            }
+                        }
+                    }
+                }
+                mainList.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, items);
+                listLayout.Visibility = ViewStates.Visible;
+            }
+
+            void SubCategoryListing(string foodItem)
+            {
+                firstLayout.Visibility = ViewStates.Gone;
+                secondLayout.Visibility = ViewStates.Gone;
+                foreach (Subcategory i in root.subcategories)
+                {
+                    if (i.subcategoryId == foodItem)
+                    {
+                        foreach (Entry j in root.entries)
+                        {
+                            for (int k = 0; k < i.children.Count; k++)
+                            {
+                                if (j.entryId == i.children[k])
+                                {
+                                    items.Add(j.name);
+                                }
+                            }
+                        }
+                    }
+                }
+                mainList.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, items);
+                listLayout.Visibility = ViewStates.Visible;
+            }
+
+            //Handles the back button, showing and 
             backButton.Click += delegate
             {
                 if(currentLayout != 0)
                 {
-                    firstLayout.Visibility = ViewStates.Visible;
-                    secondLayout.Visibility = ViewStates.Visible;
                     switch (currentLayout)
                     {
                         case 1:
-                            firstClick.Visibility = ViewStates.Invisible;
+                            firstClick.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
                             break;
                         case 2:
-                            secondClick.Visibility = ViewStates.Invisible;
+                            secondClick.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
                             break;
                         case 3:
-                            thirdClick.Visibility = ViewStates.Invisible;
+                            thirdClick.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
                             break;
                         case 4:
-                            fourthClick.Visibility = ViewStates.Invisible;
+                            fourthClick.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
                             break;
                         case 5:
-                            fifthClick.Visibility = ViewStates.Invisible;
+                            listLayout.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            break;
+                        case 6:
+                            listLayout.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            break;
+                        case 7:
+                            listLayout.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            break;
+                        case 8:
+                            listLayout.Visibility = ViewStates.Gone;
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            break;
+                        //meat, Eggs, and Dairy
+                        case 9:
+                            listLayout.Visibility = ViewStates.Gone;
+                            fourthClick.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            currentLayout = 4;
+                            break;
+                        //baked, prepared, imcomp
+                        case 10:
+                            listLayout.Visibility = ViewStates.Gone;
+                            firstClick.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            currentLayout = 1;
+                            break;
+                        //alc and non alc
+                        case 11:
+                            listLayout.Visibility = ViewStates.Gone;
+                            thirdClick.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            currentLayout = 3;
+                            break;
+                        case 12:
+                            listLayout.Visibility = ViewStates.Gone;
+                            secondClick.Visibility = ViewStates.Visible;
+                            items.Clear();
+                            currentLayout = 2;
+                            break;
+                        case 13:
+                            search.SetQuery("", true);
+                            search.SetIconifiedByDefault(true);
+                            firstLayout.Visibility = ViewStates.Visible;
+                            secondLayout.Visibility = ViewStates.Visible;
+                            firstClick.Visibility = ViewStates.Gone;
+                            secondClick.Visibility = ViewStates.Gone;
+                            thirdClick.Visibility = ViewStates.Gone;
+                            fourthClick.Visibility = ViewStates.Gone;
+                            listLayout2.Visibility = ViewStates.Gone;
+                            search.SetIconifiedByDefault(false);
+                            search.ClearFocus();
                             break;
                     }
                 }
             };
-            List<Category> categoryItems = new List<Category>();
-            StreamReader strm = new StreamReader(Assets.Open("categories.json"));
-            string json = strm.ReadToEnd();
-            Root root = JsonConvert.DeserializeObject<Root>(json);
-            //dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
-            //dynamic jsonObj = Newtonsoft.Json.Linq.JValue.Parse(json);
-            /*dynamic categoryObj;
-            foreach (var item in jsonObj)
-            {
-                if(item.Name == "categories")
-                {
-                    categoryObj = item;
-                    foreach (var item2 in categoryObj)
-                    {
-                        categoryItems.Add(JsonConvert.DeserializeObject<Category>(item2.Value));
-                    }
-                }
-            }
-            */
-            /*
-            ListView foodList = FindViewById<ListView>(Resource.Id.listView);
-
-            base.OnCreate(savedInstanceState);
-
-            ListAdapter adapter = new ArrayAdapter<string>(this, Resource.Layout.list_item, //StringArrayHere);
-
-            foodList.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args)
-            {
-                Toast.MakeText(Application, ((TextView)args.View).Text, ToastLength.Short).Show();
-            };
-            */
-
         }
-
-
-
         public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -236,18 +474,19 @@ namespace AndroidMasterDetail
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
+            //Declarations for sets of buttons
             int id = item.ItemId;
             if (id == Resource.Id.nav_new)
             {
-                // Handle the camera action
             }
             else if (id == Resource.Id.nav_markets)
             {
-
+                var uri = Android.Net.Uri.Parse("https://www.fromthelandofkansas.com/market/list");
+                var intent = new Intent(Intent.ActionView, uri);
+                StartActivity(intent);
             }
             else if (id == Resource.Id.nav_report)
             {
-                SetContentView(Resource.Layout.bugreporting);
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
